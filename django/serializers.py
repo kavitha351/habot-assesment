@@ -61,8 +61,8 @@ class StudentOnboardingSerializer(serializers.Serializer):
 
     def validate(self, data):
         if (
-            data.get("requires_lsa") 
-            and data.get("learning_difficulty") 
+            data.get("requires_lsa")
+            and data.get("learning_difficulty")
             == "Other"
         ):
             raise serializers.ValidationError(

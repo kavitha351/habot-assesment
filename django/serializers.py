@@ -55,16 +55,18 @@ class StudentOnboardingSerializer(serializers.Serializer):
     def validate_student_name(self, value):
         if not re.fullmatch(r"^[A-Za-z ]+$", value):
             raise serializers.ValidationError(
-                "Student name should contain only letters and spaces."
+                "Name should contain only letters and spaces."
             )
         return value
 
     def validate(self, data):
         if (
-            data.get("requires_lsa") and data.get("learning_difficulty") == "Other"
+            data.get("requires_lsa") 
+            and data.get("learning_difficulty") 
+            == "Other"
         ):
             raise serializers.ValidationError(
-                "Learning difficulty must be specified when LSA support is requested."
+                "Learning difficulty must be specified"
+                "when LSA support is requested."
             )
         return data
-    
